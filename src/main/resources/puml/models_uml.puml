@@ -29,6 +29,7 @@ class SaleItem {
   - quantity: int
   - unitPrice: double
   + SaleItem(product: Product, quantity: int)
+  + getQuantity(): int
   + getSubtotal(): double
 }
 

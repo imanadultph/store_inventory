@@ -15,5 +15,6 @@ public class SaleItem {
     this.unitPrice = product.getPrice();
   }
 
+  public int getQuantity() { return quantity; }
   public double getSubtotal() { return unitPrice * quantity; }
 }
