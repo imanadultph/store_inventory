@@ -16,10 +16,23 @@ public final class UITheme {
   public static final Color DARK_TEXT = new Color(28, 40, 50);
   public static final Color MUTED_TEXT = new Color(90, 110, 125);
 
+  // FONT WEIGHTS
+  public static final int FONT_WEIGHT_TITLE = Font.BOLD;
+  public static final int FONT_WEIGHT_SUBTITLE = Font.PLAIN;
+  public static final int FONT_WEIGHT_LABEL = Font.PLAIN;
+
+  // FONT FAMILY
+  public static final String FONT_FAMILY = "SansSerif";
+
   public static final Font TITLE_FONT = new Font("SansSerif", Font.BOLD, 24);
   public static final Font SUBTITLE_FONT =
       new Font("SansSerif", Font.PLAIN, 16);
   public static final Font LABEL_FONT = new Font("SansSerif", Font.PLAIN, 16);
+
+  // font with custom font_family, weight, and size
+  public static Font customFont(String family, int weight, int size) {
+    return new Font(family, weight, size);
+  }
 
   private UITheme() {}
 
