@@ -12,13 +12,13 @@ public class ProductsPage extends JPanel {
 
     JPanel content = new JPanel(new BorderLayout(0, 16));
     content.setOpaque(false);
-    content.setBorder(new EmptyBorder(20, 20, 20, 20));
+    content.setBorder(new EmptyBorder(40, 20, 40, 20));
 
     JPanel topRow = new JPanel(new BorderLayout());
     topRow.setOpaque(false);
 
     JLabel title = new JLabel("Manage Products");
-    title.setFont(UITheme.TITLE_FONT);
+    title.setFont(UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 32));
     topRow.add(title, BorderLayout.WEST);
 
     JButton addProduct = UITheme.primaryButton("Add Product");
@@ -72,7 +72,11 @@ public class ProductsPage extends JPanel {
     actions.setOpaque(false);
     actions.add(UITheme.secondaryButton("Edit"));
     actions.add(UITheme.secondaryButton("Delete"));
-    row.add(actions);
+
+    JPanel actionsWrapper = new JPanel(new GridBagLayout());
+    actionsWrapper.setOpaque(false);
+    actionsWrapper.add(actions, new GridBagConstraints());
+    row.add(actionsWrapper);
 
     return row;
   }
