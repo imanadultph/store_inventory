@@ -35,6 +35,10 @@ public class Header extends JPanel {
     left.add(Box.createVerticalStrut(2));
     left.add(userLabel);
 
+    JPanel leftWrapper = new JPanel(new GridBagLayout());
+    leftWrapper.setOpaque(false);
+    leftWrapper.add(left, new GridBagConstraints());
+
     JPanel right = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 12));
     right.setOpaque(false);
     right.setBorder(new EmptyBorder(0, 0, 0, 12));
@@ -46,7 +50,7 @@ public class Header extends JPanel {
     right.add(navButton("Reports", Navigation.REPORTS, handler));
     right.add(logoutButton(handler));
 
-    add(left, BorderLayout.WEST);
+    add(leftWrapper, BorderLayout.WEST);
     add(right, BorderLayout.EAST);
   }
 
