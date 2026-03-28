@@ -51,7 +51,14 @@ public class ReportsPage extends JPanel {
                            "Monitor stock levels, low stock, and value.",
                            "View Report"));
 
-    add(content, BorderLayout.NORTH);
+    JScrollPane scroll = new JScrollPane(content);
+    scroll.setBorder(null);
+    scroll.setOpaque(false);
+    scroll.getViewport().setOpaque(false);
+    scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    scroll.getVerticalScrollBar().setUnitIncrement(16);
+
+    add(scroll, BorderLayout.CENTER);
   }
 
   private JPanel reportCard(String title, String description, String action) {

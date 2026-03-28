@@ -38,9 +38,11 @@ public class InventoryPage extends JPanel {
     stats.add(statCard("In Stock", "96"));
     stats.add(statCard("Low Stock", "18"));
     stats.add(statCard("Out of Stock", "5"));
+    stats.setAlignmentX(Component.LEFT_ALIGNMENT);
 
     JPanel stockLevels = UITheme.cardPanel();
     stockLevels.setLayout(new BoxLayout(stockLevels, BoxLayout.Y_AXIS));
+    stockLevels.setAlignmentX(Component.LEFT_ALIGNMENT);
 
     JLabel stockTitle = new JLabel("Inventory Items");
     stockTitle.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
@@ -58,14 +60,20 @@ public class InventoryPage extends JPanel {
     searchLabel.setFont(UITheme.SUBTITLE_FONT);
     searchLabel.setForeground(UITheme.MUTED_TEXT);
     searchLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    JPanel searchRow = new JPanel(new BorderLayout(8, 0));
+    searchRow.setOpaque(false);
+    searchRow.setAlignmentX(Component.LEFT_ALIGNMENT);
+    JButton searchButton = UITheme.secondaryButton("Search");
+    searchButton.setFont(UITheme.SUBTITLE_FONT);
+    searchButton.setMargin(new Insets(8, 14, 8, 14));
     JTextField searchField = new JTextField();
-    searchField.setMaximumSize(new Dimension(Integer.MAX_VALUE, 32));
     searchField.setFont(UITheme.LABEL_FONT);
-    searchField.setAlignmentX(Component.LEFT_ALIGNMENT);
+    searchRow.add(searchButton, BorderLayout.WEST);
+    searchRow.add(searchField, BorderLayout.CENTER);
 
     searchPanel.add(searchLabel);
     searchPanel.add(Box.createVerticalStrut(6));
-    searchPanel.add(searchField);
+    searchPanel.add(searchRow);
 
     stockLevels.add(stockTitle);
     stockLevels.add(Box.createVerticalStrut(4));
@@ -81,6 +89,8 @@ public class InventoryPage extends JPanel {
     stockLevels.add(inventoryRow("Laptop Stand", "SKU-204", "Office", 7, 10));
     stockLevels.add(Box.createVerticalStrut(12));
     stockLevels.add(inventoryRow("Smart Bulb", "SKU-310", "Home", 0, 6));
+    Dimension stockPreferred = stockLevels.getPreferredSize();
+    stockLevels.setMaximumSize(new Dimension(Integer.MAX_VALUE, stockPreferred.height));
 
     JPanel body = new JPanel();
     body.setOpaque(false);
@@ -88,11 +98,19 @@ public class InventoryPage extends JPanel {
     body.add(stats);
     body.add(Box.createVerticalStrut(16));
     body.add(stockLevels);
+    body.setAlignmentX(Component.LEFT_ALIGNMENT);
 
     content.add(topRow, BorderLayout.NORTH);
     content.add(body, BorderLayout.CENTER);
 
-    add(content, BorderLayout.CENTER);
+    JScrollPane scroll = new JScrollPane(content);
+    scroll.setBorder(null);
+    scroll.setOpaque(false);
+    scroll.getViewport().setOpaque(false);
+    scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    scroll.getVerticalScrollBar().setUnitIncrement(16);
+
+    add(scroll, BorderLayout.CENTER);
   }
 
   private JPanel statCard(String label, String value) {
@@ -140,6 +158,11 @@ public class InventoryPage extends JPanel {
     status.setFont(UITheme.SUBTITLE_FONT);
     status.setMargin(new Insets(8, 14, 8, 14));
     status.setEnabled(false);
+    status.setHorizontalAlignment(SwingConstants.CENTER);
+    Dimension statusSize = new Dimension(225, 40);
+    status.setPreferredSize(statusSize);
+    status.setMinimumSize(statusSize);
+    status.setMaximumSize(statusSize);
 
     card.add(left, BorderLayout.CENTER);
     card.add(status, BorderLayout.EAST);

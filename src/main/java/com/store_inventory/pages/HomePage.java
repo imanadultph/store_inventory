@@ -62,6 +62,13 @@ public class HomePage extends JPanel {
     content.add(left);
     content.add(right);
 
-    add(content, BorderLayout.CENTER);
+    JScrollPane scroll = new JScrollPane(content);
+    scroll.setBorder(null);
+    scroll.setOpaque(false);
+    scroll.getViewport().setOpaque(false);
+    scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    scroll.getVerticalScrollBar().setUnitIncrement(16);
+
+    add(scroll, BorderLayout.CENTER);
   }
 }

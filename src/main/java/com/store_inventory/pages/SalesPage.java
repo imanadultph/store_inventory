@@ -77,7 +77,14 @@ public class SalesPage extends JPanel {
     content.add(topRow, BorderLayout.NORTH);
     content.add(body, BorderLayout.CENTER);
 
-    add(content, BorderLayout.CENTER);
+    JScrollPane scroll = new JScrollPane(content);
+    scroll.setBorder(null);
+    scroll.setOpaque(false);
+    scroll.getViewport().setOpaque(false);
+    scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    scroll.getVerticalScrollBar().setUnitIncrement(16);
+
+    add(scroll, BorderLayout.CENTER);
   }
 
   private JPanel statCard(String label, String value) {

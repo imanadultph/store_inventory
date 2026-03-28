@@ -68,7 +68,14 @@ public class ProductsPage extends JPanel {
     content.add(Box.createVerticalStrut(20));
     content.add(tableCard, BorderLayout.CENTER);
 
-    add(content, BorderLayout.CENTER);
+    JScrollPane scroll = new JScrollPane(content);
+    scroll.setBorder(null);
+    scroll.setOpaque(false);
+    scroll.getViewport().setOpaque(false);
+    scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    scroll.getVerticalScrollBar().setUnitIncrement(16);
+
+    add(scroll, BorderLayout.CENTER);
   }
 
   private JPanel tableHeader() {
