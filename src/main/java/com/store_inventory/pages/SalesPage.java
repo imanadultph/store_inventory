@@ -3,6 +3,8 @@ package com.store_inventory.pages;
 import com.store_inventory.pages.components.UITheme;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
 public class SalesPage extends JPanel {
@@ -10,9 +12,40 @@ public class SalesPage extends JPanel {
     setLayout(new BorderLayout());
     setBackground(UITheme.BACKGROUND);
 
-    JPanel content = new JPanel(new BorderLayout(0, 16));
+    JPanel content = new JPanel(new BorderLayout(0, 24));
     content.setOpaque(false);
-    content.setBorder(new EmptyBorder(20, 20, 20, 20));
+    content.setBorder(new EmptyBorder(40, 20, 40, 20));
+
+    JPanel topRow = new JPanel(new BorderLayout());
+    topRow.setOpaque(false);
+
+    JPanel headerText = new JPanel();
+    headerText.setOpaque(false);
+    headerText.setLayout(new BoxLayout(headerText, BoxLayout.Y_AXIS));
+
+    JLabel title = new JLabel("Sales Overview");
+    title.setFont(
+        UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 32));
+    JLabel description = new JLabel(
+        "Review recent transactions and sales performance at a glance.");
+    description.setFont(UITheme.SUBTITLE_FONT);
+    description.setForeground(UITheme.MUTED_TEXT);
+
+    headerText.add(title);
+    headerText.add(Box.createVerticalStrut(6));
+    headerText.add(description);
+    topRow.add(headerText, BorderLayout.WEST);
+
+    JButton addSale = UITheme.primaryButton("Add Sale");
+    Border line = UITheme.roundedBorder(UITheme.BORDER, 1, 12);
+    Border padding = new EmptyBorder(12, 16, 12, 16);
+    addSale.setBorder(new CompoundBorder(line, padding));
+
+    JPanel buttonWrapper = new JPanel(new GridBagLayout());
+    buttonWrapper.setOpaque(false);
+    buttonWrapper.add(addSale);
+
+    topRow.add(buttonWrapper, BorderLayout.EAST);
 
     JPanel stats = new JPanel(new GridLayout(1, 3, 12, 12));
     stats.setOpaque(false);
@@ -25,17 +58,24 @@ public class SalesPage extends JPanel {
 
     tableCard.add(tableHeader());
     tableCard.add(Box.createVerticalStrut(8));
-    tableCard.add(tableRow("2026-03-19", "Wireless Mouse", "2", "PHP 799",
-                            "PHP 1,598"));
+    tableCard.add(
+        tableRow("2026-03-19", "Wireless Mouse", "2", "PHP 799", "PHP 1,598"));
     tableCard.add(Box.createVerticalStrut(6));
-    tableCard.add(tableRow("2026-03-19", "Laptop Stand", "1", "PHP 1,199",
-                            "PHP 1,199"));
+    tableCard.add(
+        tableRow("2026-03-19", "Laptop Stand", "1", "PHP 1,199", "PHP 1,199"));
     tableCard.add(Box.createVerticalStrut(6));
-    tableCard.add(tableRow("2026-03-20", "USB-C Cable", "5", "PHP 199",
-                            "PHP 995"));
+    tableCard.add(
+        tableRow("2026-03-20", "USB-C Cable", "5", "PHP 199", "PHP 995"));
 
-    content.add(stats, BorderLayout.NORTH);
-    content.add(tableCard, BorderLayout.CENTER);
+    JPanel body = new JPanel();
+    body.setOpaque(false);
+    body.setLayout(new BoxLayout(body, BoxLayout.Y_AXIS));
+    body.add(stats);
+    body.add(Box.createVerticalStrut(16));
+    body.add(tableCard);
+
+    content.add(topRow, BorderLayout.NORTH);
+    content.add(body, BorderLayout.CENTER);
 
     add(content, BorderLayout.CENTER);
   }
@@ -67,8 +107,8 @@ public class SalesPage extends JPanel {
     return row;
   }
 
-  private JPanel tableRow(String date, String product, String qty,
-                          String unit, String total) {
+  private JPanel tableRow(String date, String product, String qty, String unit,
+                          String total) {
     JPanel row = new JPanel(new GridLayout(1, 5, 8, 0));
     row.setOpaque(false);
     row.add(cellLabel(date));

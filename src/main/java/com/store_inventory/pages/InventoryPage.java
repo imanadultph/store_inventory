@@ -10,9 +10,27 @@ public class InventoryPage extends JPanel {
     setLayout(new BorderLayout());
     setBackground(UITheme.BACKGROUND);
 
-    JPanel content = new JPanel(new BorderLayout(0, 16));
+    JPanel content = new JPanel(new BorderLayout(0, 24));
     content.setOpaque(false);
-    content.setBorder(new EmptyBorder(20, 20, 20, 20));
+    content.setBorder(new EmptyBorder(40, 20, 40, 20));
+
+    JPanel topRow = new JPanel(new BorderLayout());
+    topRow.setOpaque(false);
+
+    JPanel headerText = new JPanel();
+    headerText.setOpaque(false);
+    headerText.setLayout(new BoxLayout(headerText, BoxLayout.Y_AXIS));
+
+    JLabel title = new JLabel("Inventory Overview");
+    title.setFont(UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 32));
+    JLabel description = new JLabel("Track stock levels, low items, and availability across the store.");
+    description.setFont(UITheme.SUBTITLE_FONT);
+    description.setForeground(UITheme.MUTED_TEXT);
+
+    headerText.add(title);
+    headerText.add(Box.createVerticalStrut(6));
+    headerText.add(description);
+    topRow.add(headerText, BorderLayout.WEST);
 
     JPanel stats = new JPanel(new GridLayout(1, 4, 12, 12));
     stats.setOpaque(false);
@@ -24,10 +42,10 @@ public class InventoryPage extends JPanel {
     JPanel stockLevels = UITheme.cardPanel();
     stockLevels.setLayout(new BoxLayout(stockLevels, BoxLayout.Y_AXIS));
 
-    JLabel title = new JLabel("Stock Levels");
-    title.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
-    title.setAlignmentX(Component.LEFT_ALIGNMENT);
-    stockLevels.add(title);
+    JLabel stockTitle = new JLabel("Stock Levels");
+    stockTitle.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
+    stockTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
+    stockLevels.add(stockTitle);
     stockLevels.add(Box.createVerticalStrut(10));
 
     stockLevels.add(stockRow("Wireless Mouse", "12 units", "Aisle 3"));
@@ -38,8 +56,15 @@ public class InventoryPage extends JPanel {
     stockLevels.add(Box.createVerticalStrut(8));
     stockLevels.add(stockRow("Smart Bulb", "3 units", "Aisle 1"));
 
-    content.add(stats, BorderLayout.NORTH);
-    content.add(stockLevels, BorderLayout.CENTER);
+    JPanel body = new JPanel();
+    body.setOpaque(false);
+    body.setLayout(new BoxLayout(body, BoxLayout.Y_AXIS));
+    body.add(stats);
+    body.add(Box.createVerticalStrut(16));
+    body.add(stockLevels);
+
+    content.add(topRow, BorderLayout.NORTH);
+    content.add(body, BorderLayout.CENTER);
 
     add(content, BorderLayout.CENTER);
   }

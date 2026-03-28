@@ -3,6 +3,8 @@ package com.store_inventory.pages;
 import com.store_inventory.pages.components.UITheme;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
 public class ProductsPage extends JPanel {
@@ -10,37 +12,60 @@ public class ProductsPage extends JPanel {
     setLayout(new BorderLayout());
     setBackground(UITheme.BACKGROUND);
 
-    JPanel content = new JPanel(new BorderLayout(0, 16));
+    JPanel content = new JPanel(new BorderLayout(0, 24));
     content.setOpaque(false);
     content.setBorder(new EmptyBorder(40, 20, 40, 20));
 
     JPanel topRow = new JPanel(new BorderLayout());
     topRow.setOpaque(false);
 
+    JPanel headerText = new JPanel();
+    headerText.setOpaque(false);
+    headerText.setLayout(new BoxLayout(headerText, BoxLayout.Y_AXIS));
+
     JLabel title = new JLabel("Manage Products");
-    title.setFont(UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 32));
-    topRow.add(title, BorderLayout.WEST);
+    title.setFont(
+        UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 32));
+    JLabel description =
+        new JLabel("Add, edit, and remove products from the inventory.");
+    description.setFont(UITheme.SUBTITLE_FONT);
+    description.setForeground(UITheme.MUTED_TEXT);
+
+    headerText.add(title);
+    headerText.add(Box.createVerticalStrut(6));
+    headerText.add(description);
+    topRow.add(headerText, BorderLayout.WEST);
 
     JButton addProduct = UITheme.primaryButton("Add Product");
-    topRow.add(addProduct, BorderLayout.EAST);
+    Border line = UITheme.roundedBorder(UITheme.BORDER, 1, 12);
+    Border padding = new EmptyBorder(12, 16, 12, 16);
+    addProduct.setBorder(new CompoundBorder(line, padding));
+
+    JPanel buttonWrapper = new JPanel(new GridBagLayout());
+    buttonWrapper.setOpaque(false);
+    buttonWrapper.add(addProduct);
+
+    topRow.add(buttonWrapper, BorderLayout.EAST);
 
     JPanel tableCard = UITheme.cardPanel();
     tableCard.setLayout(new BoxLayout(tableCard, BoxLayout.Y_AXIS));
 
     tableCard.add(tableHeader());
     tableCard.add(Box.createVerticalStrut(8));
-    tableCard.add(tableRow("Wireless Earbuds", "101", "PHP 799", "32", "Audio"));
+    tableCard.add(
+        tableRow("Wireless Earbuds", "101", "PHP 799", "32", "Audio"));
     tableCard.add(Box.createVerticalStrut(6));
-    tableCard.add(tableRow("Bluetooth Speaker", "102", "PHP 1,299", "12",
-                            "Audio"));
+    tableCard.add(
+        tableRow("Bluetooth Speaker", "102", "PHP 1,299", "12", "Audio"));
     tableCard.add(Box.createVerticalStrut(6));
-    tableCard.add(tableRow("Phone Case", "103", "PHP 249", "68",
-                            "Accessories"));
+    tableCard.add(
+        tableRow("Phone Case", "103", "PHP 249", "68", "Accessories"));
     tableCard.add(Box.createVerticalStrut(6));
-    tableCard.add(tableRow("USB-C Charger", "104", "PHP 399", "45",
-                            "Accessories"));
+    tableCard.add(
+        tableRow("USB-C Charger", "104", "PHP 399", "45", "Accessories"));
 
     content.add(topRow, BorderLayout.NORTH);
+    content.add(Box.createVerticalStrut(20));
     content.add(tableCard, BorderLayout.CENTER);
 
     add(content, BorderLayout.CENTER);
@@ -52,7 +77,7 @@ public class ProductsPage extends JPanel {
     row.add(headerLabel("Name"));
     row.add(headerLabel("ID"));
     row.add(headerLabel("Price"));
-    row.add(headerLabel("Stock"));
+    row.add(headerLabel("Quantity"));
     row.add(headerLabel("Category"));
     row.add(headerLabel("Actions"));
     return row;

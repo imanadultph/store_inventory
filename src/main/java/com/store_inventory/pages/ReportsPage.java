@@ -16,7 +16,28 @@ public class ReportsPage extends JPanel {
     JPanel content = new JPanel();
     content.setOpaque(false);
     content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
-    content.setBorder(new EmptyBorder(20, 20, 20, 20));
+    content.setBorder(new EmptyBorder(40, 20, 40, 20));
+
+    JPanel topRow = new JPanel(new BorderLayout());
+    topRow.setOpaque(false);
+
+    JPanel headerText = new JPanel();
+    headerText.setOpaque(false);
+    headerText.setLayout(new BoxLayout(headerText, BoxLayout.Y_AXIS));
+
+    JLabel title = new JLabel("Reports");
+    title.setFont(UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 32));
+    JLabel description = new JLabel("Generate and review detailed product, sales, and inventory reports.");
+    description.setFont(UITheme.SUBTITLE_FONT);
+    description.setForeground(UITheme.MUTED_TEXT);
+
+    headerText.add(title);
+    headerText.add(Box.createVerticalStrut(6));
+    headerText.add(description);
+    topRow.add(headerText, BorderLayout.WEST);
+
+    content.add(topRow);
+    content.add(Box.createVerticalStrut(16));
 
     content.add(reportCard("Product Report",
                            "View all product listings and pricing.",

@@ -2,8 +2,8 @@ package com.store_inventory.pages.components;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.AbstractBorder;
+import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -39,18 +39,23 @@ public final class UITheme {
   private UITheme() {}
 
   public static JPanel cardPanel() {
+    Border line = roundedBorder(BORDER, 1, 24);
+    Border padding = new EmptyBorder(12, 16, 12, 16);
+
     JPanel panel = new JPanel();
     panel.setBackground(CARD_BACKGROUND);
-    panel.setBorder(new CompoundBorder(new LineBorder(BORDER, 1, true),
-                                       new EmptyBorder(12, 12, 12, 12)));
+    panel.setBorder(new CompoundBorder(line, padding));
     return panel;
   }
 
   public static JButton primaryButton(String text) {
+    Border line = roundedBorder(BORDER, 1, 12);
+    Border padding = new EmptyBorder(6, 16, 6, 16);
+
     JButton button = new JButton(text) {
       @Override
       protected void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
+        Graphics2D g2 = (Graphics2D)g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                             RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(getBackground());
@@ -62,8 +67,6 @@ public final class UITheme {
     button.setBackground(PRIMARY);
     button.setForeground(Color.WHITE);
     button.setFocusPainted(false);
-    Border line = roundedBorder(BORDER, 2, 12);
-    Border padding = new EmptyBorder(6, 16, 6, 16);
     button.setBorder(new CompoundBorder(line, padding));
     button.setContentAreaFilled(false);
     button.setOpaque(false);
@@ -72,10 +75,13 @@ public final class UITheme {
   }
 
   public static JButton secondaryButton(String text) {
+    Border line = roundedBorder(BORDER, 2, 12);
+    Border padding = new EmptyBorder(6, 16, 6, 16);
+
     JButton button = new JButton(text) {
       @Override
       protected void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
+        Graphics2D g2 = (Graphics2D)g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                             RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(getBackground());
@@ -87,8 +93,6 @@ public final class UITheme {
     button.setBackground(CARD_BACKGROUND);
     button.setForeground(PRIMARY_TEXT);
     button.setFocusPainted(false);
-    Border line = roundedBorder(BORDER, 2, 12);
-    Border padding = new EmptyBorder(6, 16, 6, 16);
     button.setBorder(new CompoundBorder(line, padding));
     button.setContentAreaFilled(false);
     button.setOpaque(false);
@@ -115,7 +119,7 @@ public final class UITheme {
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int width,
                             int height) {
-      Graphics2D g2 = (Graphics2D) g.create();
+      Graphics2D g2 = (Graphics2D)g.create();
       g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                           RenderingHints.VALUE_ANTIALIAS_ON);
       g2.setColor(color);
