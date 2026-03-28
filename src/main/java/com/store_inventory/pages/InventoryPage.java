@@ -3,6 +3,8 @@ package com.store_inventory.pages;
 import com.store_inventory.pages.components.UITheme;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
 public class InventoryPage extends JPanel {
@@ -22,8 +24,10 @@ public class InventoryPage extends JPanel {
     headerText.setLayout(new BoxLayout(headerText, BoxLayout.Y_AXIS));
 
     JLabel title = new JLabel("Inventory Overview");
-    title.setFont(UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 32));
-    JLabel description = new JLabel("Track stock levels, low items, and availability across the store.");
+    title.setFont(
+        UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 32));
+    JLabel description = new JLabel(
+        "Track stock levels, low items, and availability across the store.");
     description.setFont(UITheme.SUBTITLE_FONT);
     description.setForeground(UITheme.MUTED_TEXT);
 
@@ -47,7 +51,8 @@ public class InventoryPage extends JPanel {
     JLabel stockTitle = new JLabel("Inventory Items");
     stockTitle.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
     stockTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
-    JLabel stockBrief = new JLabel("Review stock, reorder levels, and status for each product.");
+    JLabel stockBrief = new JLabel(
+        "Review stock, reorder levels, and status for each product.");
     stockBrief.setFont(UITheme.SUBTITLE_FONT);
     stockBrief.setForeground(UITheme.MUTED_TEXT);
     stockBrief.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -67,6 +72,9 @@ public class InventoryPage extends JPanel {
     searchButton.setFont(UITheme.SUBTITLE_FONT);
     searchButton.setMargin(new Insets(8, 14, 8, 14));
     JTextField searchField = new JTextField();
+    Border line = UITheme.roundedBorder(UITheme.BORDER, 1, 12);
+    Border padding = new EmptyBorder(6, 16, 6, 16);
+    searchField.setBorder(new CompoundBorder(line, padding));
     searchField.setFont(UITheme.LABEL_FONT);
     searchRow.add(searchButton, BorderLayout.WEST);
     searchRow.add(searchField, BorderLayout.CENTER);
@@ -82,15 +90,18 @@ public class InventoryPage extends JPanel {
     stockLevels.add(searchPanel);
     stockLevels.add(Box.createVerticalStrut(16));
 
-    stockLevels.add(inventoryRow("Wireless Mouse", "SKU-101", "Accessories", 12, 8));
+    stockLevels.add(
+        inventoryRow("Wireless Mouse", "SKU-101", "Accessories", 12, 8));
     stockLevels.add(Box.createVerticalStrut(12));
-    stockLevels.add(inventoryRow("USB-C Cable", "SKU-114", "Accessories", 48, 20));
+    stockLevels.add(
+        inventoryRow("USB-C Cable", "SKU-114", "Accessories", 48, 20));
     stockLevels.add(Box.createVerticalStrut(12));
     stockLevels.add(inventoryRow("Laptop Stand", "SKU-204", "Office", 7, 10));
     stockLevels.add(Box.createVerticalStrut(12));
     stockLevels.add(inventoryRow("Smart Bulb", "SKU-310", "Home", 0, 6));
     Dimension stockPreferred = stockLevels.getPreferredSize();
-    stockLevels.setMaximumSize(new Dimension(Integer.MAX_VALUE, stockPreferred.height));
+    stockLevels.setMaximumSize(
+        new Dimension(Integer.MAX_VALUE, stockPreferred.height));
 
     JPanel body = new JPanel();
     body.setOpaque(false);
@@ -107,7 +118,8 @@ public class InventoryPage extends JPanel {
     scroll.setBorder(null);
     scroll.setOpaque(false);
     scroll.getViewport().setOpaque(false);
-    scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    scroll.setHorizontalScrollBarPolicy(
+        ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     scroll.getVerticalScrollBar().setUnitIncrement(16);
 
     add(scroll, BorderLayout.CENTER);
@@ -144,7 +156,8 @@ public class InventoryPage extends JPanel {
     JLabel metaLabel = new JLabel("SKU: " + sku + "  |  Category: " + category);
     metaLabel.setFont(UITheme.SUBTITLE_FONT);
     metaLabel.setForeground(UITheme.MUTED_TEXT);
-    JLabel stockLabel = new JLabel("Stock: " + stock + "  |  Reorder Level: " + reorderLevel);
+    JLabel stockLabel =
+        new JLabel("Stock: " + stock + "  |  Reorder Level: " + reorderLevel);
     stockLabel.setFont(UITheme.SUBTITLE_FONT);
     stockLabel.setForeground(UITheme.MUTED_TEXT);
 
@@ -155,14 +168,11 @@ public class InventoryPage extends JPanel {
     left.add(stockLabel);
 
     JButton status = UITheme.secondaryButton(stockStatus(stock, reorderLevel));
-    status.setFont(UITheme.SUBTITLE_FONT);
     status.setMargin(new Insets(8, 14, 8, 14));
     status.setEnabled(false);
     status.setHorizontalAlignment(SwingConstants.CENTER);
-    Dimension statusSize = new Dimension(225, 40);
+    Dimension statusSize = new Dimension(150, 25);
     status.setPreferredSize(statusSize);
-    status.setMinimumSize(statusSize);
-    status.setMaximumSize(statusSize);
 
     card.add(left, BorderLayout.CENTER);
     card.add(status, BorderLayout.EAST);
