@@ -40,32 +40,33 @@ public class HomePage extends JPanel implements Refreshable {
     hint.setAlignmentX(Component.LEFT_ALIGNMENT);
     UITheme.themeLabel(hint);
 
-    left.add(welcome);
-    left.add(Box.createVerticalStrut(8));
-    left.add(hint);
+    JPanel introCard = UITheme.cardPanel();
+    introCard.setLayout(new BoxLayout(introCard, BoxLayout.Y_AXIS));
+    introCard.setAlignmentX(Component.LEFT_ALIGNMENT);
+    introCard.add(welcome);
+    introCard.add(Box.createVerticalStrut(8));
+    introCard.add(hint);
+
+    left.add(introCard);
     left.add(Box.createVerticalStrut(12));
 
-    JPanel statsPanel = UITheme.cardPanel();
-    statsPanel.setOpaque(false);
-    statsPanel.setBorder(null);
-    statsPanel.setLayout(new BoxLayout(statsPanel, BoxLayout.Y_AXIS));
-    statsPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
     productsValue.setFont(UITheme.customFont(UITheme.FONT_FAMILY,
-                                             UITheme.FONT_WEIGHT_LABEL, 20));
+                                             UITheme.FONT_WEIGHT_LABEL, 22));
     UITheme.themeLabel(productsValue);
-    statsPanel.add(productsValue);
-    statsPanel.add(Box.createVerticalStrut(6));
     inventoryValue.setFont(UITheme.customFont(UITheme.FONT_FAMILY,
-                                              UITheme.FONT_WEIGHT_LABEL, 20));
+                                              UITheme.FONT_WEIGHT_LABEL, 22));
     UITheme.themeLabel(inventoryValue);
-    statsPanel.add(inventoryValue);
-    statsPanel.add(Box.createVerticalStrut(6));
     salesValue.setFont(UITheme.customFont(UITheme.FONT_FAMILY,
-                                          UITheme.FONT_WEIGHT_LABEL, 20));
+                                          UITheme.FONT_WEIGHT_LABEL, 22));
     UITheme.themeLabel(salesValue);
-    statsPanel.add(salesValue);
-    left.add(statsPanel);
-    left.add(Box.createVerticalStrut(12));
+
+    JPanel statsGrid = new JPanel(new GridLayout(3, 1, 0, 10));
+    statsGrid.setOpaque(false);
+    statsGrid.setAlignmentX(Component.LEFT_ALIGNMENT);
+    statsGrid.add(statCard("Total Products", productsValue));
+    statsGrid.add(statCard("Total Inventory", inventoryValue));
+    statsGrid.add(statCard("Total Sales", salesValue));
+    left.add(statsGrid);
 
     JPanel right = UITheme.cardPanel();
     right.setLayout(new BorderLayout());
@@ -88,6 +89,24 @@ public class HomePage extends JPanel implements Refreshable {
 
     add(scroll, BorderLayout.CENTER);
     refresh();
+  }
+
+  private JPanel statCard(String title, JLabel valueLabel) {
+    JPanel card = UITheme.cardPanel();
+    card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
+    card.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+    JLabel label = new JLabel(title);
+    label.setFont(UITheme.SUBTITLE_FONT);
+    UITheme.themeLabel(label);
+
+    valueLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    label.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+    card.add(label);
+    card.add(Box.createVerticalStrut(6));
+    card.add(valueLabel);
+    return card;
   }
 
   @Override
