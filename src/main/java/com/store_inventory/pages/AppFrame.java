@@ -18,7 +18,7 @@ public class AppFrame extends JFrame implements NavigationHandler {
   private final Header header;
   private final Map<String, String> titles = new HashMap<>();
   private final Map<String, JPanel> pages = new HashMap<>();
-  private final AppServices services = new AppServices();
+  private final AppServices services;
 
   private final HomePage homePage;
   private final ProductsPage productsPage;
@@ -27,7 +27,8 @@ public class AppFrame extends JFrame implements NavigationHandler {
   private final ReportsPage reportsPage;
   private final ReportDetailPage reportDetailPage;
 
-  public AppFrame() {
+  public AppFrame(AppServices services) {
+    this.services = services;
     setTitle("Store Inventory");
     // setUndecorated(true);
     setSize(1100, 700);

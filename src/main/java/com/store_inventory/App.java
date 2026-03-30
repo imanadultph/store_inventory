@@ -6,7 +6,10 @@ import javax.swing.SwingUtilities;
 public class App {
   public static void main(String[] args) {
     SwingUtilities.invokeLater(() -> {
-      AppFrame frame = new AppFrame();
+      AppServices services = new AppServices();
+      TestDataSeeder.seed(services);
+
+      AppFrame frame = new AppFrame(services);
       frame.setVisible(true);
     });
   }

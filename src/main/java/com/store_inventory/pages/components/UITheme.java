@@ -42,6 +42,8 @@ public final class UITheme {
       new Font("SansSerif", Font.PLAIN, 16);
   public static final Font LABEL_FONT = new Font("SansSerif", Font.PLAIN, 16);
 
+  private UITheme() {}
+
   // font with custom font_family, weight, and size
   public static Font customFont(String family, int weight, int size) {
     return new Font(family, weight, size);
@@ -110,8 +112,6 @@ public final class UITheme {
     return scroll;
   }
 
-  private UITheme() {}
-
   public static JPanel cardPanel() {
     Border line = roundedBorder(BORDER, 1, 24);
     Border padding = new EmptyBorder(12, 16, 12, 16);
@@ -120,6 +120,22 @@ public final class UITheme {
     panel.setBackground(CARD_BACKGROUND);
     panel.setBorder(new CompoundBorder(line, padding));
     return panel;
+  }
+
+  public static JPanel statCard(String label, JLabel valueLabel) {
+    JPanel card = UITheme.cardPanel();
+    card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
+    valueLabel.setFont(UITheme.TITLE_FONT);
+    valueLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(valueLabel);
+    JLabel labelLabel = new JLabel(label);
+    labelLabel.setFont(UITheme.SUBTITLE_FONT);
+    labelLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(labelLabel);
+    card.add(valueLabel);
+    card.add(Box.createVerticalStrut(6));
+    card.add(labelLabel);
+    return card;
   }
 
   public static JButton primaryButton(String text) {

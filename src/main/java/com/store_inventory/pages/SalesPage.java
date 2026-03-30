@@ -72,9 +72,9 @@ public class SalesPage extends JPanel implements Refreshable {
 
     JPanel stats = new JPanel(new GridLayout(1, 3, 12, 12));
     stats.setOpaque(false);
-    stats.add(statCard("Total Sales", totalSalesValue));
-    stats.add(statCard("Total Revenue", totalRevenueValue));
-    stats.add(statCard("Units Sold", unitsSoldValue));
+    stats.add(UITheme.statCard("Total Sales", totalSalesValue));
+    stats.add(UITheme.statCard("Total Revenue", totalRevenueValue));
+    stats.add(UITheme.statCard("Units Sold", unitsSoldValue));
 
     JPanel tableStack = new JPanel();
     tableStack.setOpaque(false);
@@ -114,22 +114,6 @@ public class SalesPage extends JPanel implements Refreshable {
 
     add(scroll, BorderLayout.CENTER);
     refresh();
-  }
-
-  private JPanel statCard(String label, JLabel valueLabel) {
-    JPanel card = UITheme.cardPanel();
-    card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
-    valueLabel.setFont(UITheme.TITLE_FONT);
-    valueLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-    UITheme.themeLabel(valueLabel);
-    JLabel labelLabel = new JLabel(label);
-    labelLabel.setFont(UITheme.SUBTITLE_FONT);
-    labelLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-    UITheme.themeLabel(labelLabel);
-    card.add(valueLabel);
-    card.add(Box.createVerticalStrut(6));
-    card.add(labelLabel);
-    return card;
   }
 
   private JPanel tableHeader() {
