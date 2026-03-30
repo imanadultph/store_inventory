@@ -40,10 +40,11 @@ public class InventoryPage extends JPanel implements Refreshable {
     JLabel title = new JLabel("Inventory Overview");
     title.setFont(
         UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 32));
+    UITheme.themeLabel(title);
     JLabel description = new JLabel(
         "Track stock levels, low items, and availability across the store.");
     description.setFont(UITheme.SUBTITLE_FONT);
-    description.setForeground(UITheme.MUTED_TEXT);
+    UITheme.themeLabel(description);
 
     headerText.add(title);
     headerText.add(Box.createVerticalStrut(6));
@@ -65,11 +66,12 @@ public class InventoryPage extends JPanel implements Refreshable {
     JLabel stockTitle = new JLabel("Inventory Items");
     stockTitle.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
     stockTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(stockTitle);
     JLabel stockBrief = new JLabel(
         "Review stock, reorder levels, and status for each product.");
     stockBrief.setFont(UITheme.SUBTITLE_FONT);
-    stockBrief.setForeground(UITheme.MUTED_TEXT);
     stockBrief.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(stockBrief);
 
     JPanel searchPanel = new JPanel();
     searchPanel.setOpaque(false);
@@ -77,8 +79,8 @@ public class InventoryPage extends JPanel implements Refreshable {
     searchPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
     JLabel searchLabel = new JLabel("Search product by name or SKU:");
     searchLabel.setFont(UITheme.SUBTITLE_FONT);
-    searchLabel.setForeground(UITheme.MUTED_TEXT);
     searchLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(searchLabel);
     JPanel searchRow = new JPanel(new BorderLayout(8, 0));
     searchRow.setOpaque(false);
     searchRow.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -142,10 +144,11 @@ public class InventoryPage extends JPanel implements Refreshable {
     card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
     valueLabel.setFont(UITheme.TITLE_FONT);
     valueLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(valueLabel);
     JLabel labelLabel = new JLabel(label);
     labelLabel.setFont(UITheme.SUBTITLE_FONT);
-    labelLabel.setForeground(UITheme.MUTED_TEXT);
     labelLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(labelLabel);
     card.add(valueLabel);
     card.add(Box.createVerticalStrut(6));
     card.add(labelLabel);
@@ -164,13 +167,14 @@ public class InventoryPage extends JPanel implements Refreshable {
 
     JLabel nameLabel = new JLabel(name);
     nameLabel.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
+    UITheme.themeLabel(nameLabel);
     JLabel metaLabel = new JLabel("SKU: " + sku + "  |  Category: " + category);
     metaLabel.setFont(UITheme.SUBTITLE_FONT);
-    metaLabel.setForeground(UITheme.MUTED_TEXT);
+    UITheme.themeLabel(metaLabel);
     JLabel stockLabel =
         new JLabel("Stock: " + stock + "  |  Reorder Level: " + reorderLevel);
     stockLabel.setFont(UITheme.SUBTITLE_FONT);
-    stockLabel.setForeground(UITheme.MUTED_TEXT);
+    UITheme.themeLabel(stockLabel);
 
     left.add(nameLabel);
     left.add(Box.createVerticalStrut(4));

@@ -35,10 +35,11 @@ public class ProductsPage extends JPanel implements Refreshable {
     JLabel title = new JLabel("Manage Products");
     title.setFont(
         UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 32));
+    UITheme.themeLabel(title);
     JLabel description =
         new JLabel("Add, edit, and remove products from the inventory.");
     description.setFont(UITheme.SUBTITLE_FONT);
-    description.setForeground(UITheme.MUTED_TEXT);
+    UITheme.themeLabel(description);
 
     headerText.add(title);
     headerText.add(Box.createVerticalStrut(6));
@@ -125,14 +126,14 @@ public class ProductsPage extends JPanel implements Refreshable {
   private JLabel headerLabel(String text) {
     JLabel label = new JLabel(text);
     label.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
-    label.setForeground(UITheme.DARK_TEXT);
+    UITheme.themeLabel(label);
     return label;
   }
 
   private JLabel cellLabel(String text) {
     JLabel label = new JLabel(text);
     label.setFont(UITheme.LABEL_FONT);
-    label.setForeground(UITheme.MUTED_TEXT);
+    UITheme.themeLabel(label);
     return label;
   }
 
@@ -147,6 +148,7 @@ public class ProductsPage extends JPanel implements Refreshable {
 
     JLabel title = new JLabel(titleText);
     title.setFont(UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 22));
+    UITheme.themeLabel(title);
     content.add(title, BorderLayout.NORTH);
 
     JPanel formContainer = new JPanel();
@@ -288,14 +290,14 @@ public class ProductsPage extends JPanel implements Refreshable {
   private JLabel sectionTitle(String text) {
     JLabel label = new JLabel(text);
     label.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
-    label.setForeground(UITheme.DARK_TEXT);
+    UITheme.themeLabel(label);
     return label;
   }
 
   private JLabel formLabel(String text) {
     JLabel label = new JLabel(text);
     label.setFont(UITheme.LABEL_FONT);
-    label.setForeground(UITheme.DARK_TEXT);
+    UITheme.themeLabel(label);
     return label;
   }
 
@@ -357,12 +359,13 @@ public class ProductsPage extends JPanel implements Refreshable {
 
     JLabel title = new JLabel("Delete Product");
     title.setFont(UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 20));
+    UITheme.themeLabel(title);
 
     JLabel message = new JLabel(
         "<html>Are you sure you want to delete <b>" + name + "</b> (ID " + id
             + ")?</html>");
     message.setFont(UITheme.LABEL_FONT);
-    message.setForeground(UITheme.MUTED_TEXT);
+    UITheme.themeLabel(message);
 
     JPanel text = new JPanel();
     text.setLayout(new BoxLayout(text, BoxLayout.Y_AXIS));

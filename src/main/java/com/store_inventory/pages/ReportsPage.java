@@ -51,9 +51,10 @@ public class ReportsPage extends JPanel implements Refreshable {
 
     JLabel title = new JLabel("Reports");
     title.setFont(UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 32));
+    UITheme.themeLabel(title);
     JLabel description = new JLabel("Generate and review detailed product, sales, and inventory reports.");
     description.setFont(UITheme.SUBTITLE_FONT);
-    description.setForeground(UITheme.MUTED_TEXT);
+    UITheme.themeLabel(description);
 
     headerText.add(title);
     headerText.add(Box.createVerticalStrut(6));
@@ -109,9 +110,10 @@ public class ReportsPage extends JPanel implements Refreshable {
     left.setAlignmentX(Component.LEFT_ALIGNMENT);
     JLabel titleLabel = new JLabel(title);
     titleLabel.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
+    UITheme.themeLabel(titleLabel);
     JLabel descLabel = new JLabel(description);
     descLabel.setFont(UITheme.SUBTITLE_FONT);
-    descLabel.setForeground(UITheme.MUTED_TEXT);
+    UITheme.themeLabel(descLabel);
     left.add(titleLabel);
     left.add(Box.createVerticalStrut(4));
     left.add(descLabel);
@@ -207,10 +209,10 @@ public class ReportsPage extends JPanel implements Refreshable {
 
     JLabel label = new JLabel(title);
     label.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
-    label.setForeground(UITheme.DARK_TEXT);
+    UITheme.themeLabel(label);
     JLabel value = new JLabel(amount);
     value.setFont(UITheme.customFont(UITheme.FONT_FAMILY, Font.BOLD, 24));
-    value.setForeground(UITheme.PRIMARY_TEXT);
+    UITheme.themeLabel(value);
 
     card.add(label);
     card.add(Box.createVerticalStrut(6));
@@ -233,11 +235,12 @@ public class ReportsPage extends JPanel implements Refreshable {
     JLabel label = new JLabel(title);
     label.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
     label.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(label);
     JLabel generated = new JLabel(
         "Generated on " + LocalDateTime.now().format(GENERATED_FORMAT));
     generated.setFont(UITheme.SUBTITLE_FONT);
-    generated.setForeground(UITheme.MUTED_TEXT);
     generated.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(generated);
 
     text.add(label);
     text.add(Box.createVerticalStrut(4));
@@ -266,7 +269,7 @@ public class ReportsPage extends JPanel implements Refreshable {
     for (String header : headers) {
       JLabel label = new JLabel(header);
       label.setFont(headerFont);
-      label.setForeground(UITheme.DARK_TEXT);
+      UITheme.themeLabel(label);
       headerRow.add(label);
     }
     stack.add(headerRow);
@@ -278,7 +281,7 @@ public class ReportsPage extends JPanel implements Refreshable {
       for (String cell : row) {
         JLabel label = new JLabel(cell);
         label.setFont(cellFont);
-        label.setForeground(UITheme.MUTED_TEXT);
+        UITheme.themeLabel(label);
         rowPanel.add(label);
       }
       stack.add(rowPanel);

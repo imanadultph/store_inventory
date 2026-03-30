@@ -41,6 +41,7 @@ public class ReportDetailPage extends JPanel implements Refreshable {
     row.setOpaque(false);
     JLabel label = new JLabel(title);
     label.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
+    UITheme.themeLabel(label);
     JButton action = UITheme.secondaryButton(actionText);
     row.add(label, BorderLayout.WEST);
     row.add(action, BorderLayout.EAST);
@@ -57,7 +58,7 @@ public class ReportDetailPage extends JPanel implements Refreshable {
     for (String header : headers) {
       JLabel label = new JLabel(header);
       label.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
-      label.setForeground(UITheme.DARK_TEXT);
+      UITheme.themeLabel(label);
       headerRow.add(label);
     }
     stack.add(headerRow);
@@ -69,7 +70,7 @@ public class ReportDetailPage extends JPanel implements Refreshable {
       for (String cell : row) {
         JLabel label = new JLabel(cell);
         label.setFont(UITheme.LABEL_FONT);
-        label.setForeground(UITheme.MUTED_TEXT);
+        UITheme.themeLabel(label);
         rowPanel.add(label);
       }
       stack.add(rowPanel);

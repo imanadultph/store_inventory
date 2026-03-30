@@ -17,6 +17,7 @@ public final class UITheme {
   public static final Color PRIMARY_TEXT = new Color(25, 60, 85);
   public static final Color DARK_TEXT = new Color(28, 40, 50);
   public static final Color MUTED_TEXT = new Color(90, 110, 125);
+  public static final Color LABEL_TEXT = PRIMARY_TEXT;
 
   // FONT WEIGHTS
   public static final int FONT_WEIGHT_TITLE = Font.BOLD;
@@ -34,6 +35,11 @@ public final class UITheme {
   // font with custom font_family, weight, and size
   public static Font customFont(String family, int weight, int size) {
     return new Font(family, weight, size);
+  }
+
+  public static JLabel themeLabel(JLabel label) {
+    label.setForeground(LABEL_TEXT);
+    return label;
   }
 
   private UITheme() {}

@@ -33,11 +33,12 @@ public class HomePage extends JPanel implements Refreshable {
     JLabel welcome = new JLabel("Welcome to the System");
     welcome.setFont(UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 32));
     welcome.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(welcome);
 
     JLabel hint = new JLabel("Here is a quick overview of your store.");
     hint.setFont(UITheme.SUBTITLE_FONT);
-    hint.setForeground(UITheme.MUTED_TEXT);
     hint.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(hint);
 
     left.add(welcome);
     left.add(Box.createVerticalStrut(8));
@@ -51,14 +52,17 @@ public class HomePage extends JPanel implements Refreshable {
     statsPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
     productsValue.setFont(UITheme.customFont(UITheme.FONT_FAMILY,
                                              UITheme.FONT_WEIGHT_LABEL, 20));
+    UITheme.themeLabel(productsValue);
     statsPanel.add(productsValue);
     statsPanel.add(Box.createVerticalStrut(6));
     inventoryValue.setFont(UITheme.customFont(UITheme.FONT_FAMILY,
                                               UITheme.FONT_WEIGHT_LABEL, 20));
+    UITheme.themeLabel(inventoryValue);
     statsPanel.add(inventoryValue);
     statsPanel.add(Box.createVerticalStrut(6));
     salesValue.setFont(UITheme.customFont(UITheme.FONT_FAMILY,
                                           UITheme.FONT_WEIGHT_LABEL, 20));
+    UITheme.themeLabel(salesValue);
     statsPanel.add(salesValue);
     left.add(statsPanel);
     left.add(Box.createVerticalStrut(12));
@@ -69,6 +73,7 @@ public class HomePage extends JPanel implements Refreshable {
     Image img = icon.getImage().getScaledInstance(300, 200, Image.SCALE_SMOOTH);
 
     JLabel imageLabel = new JLabel(new ImageIcon(img));
+    UITheme.themeLabel(imageLabel);
     right.add(imageLabel, BorderLayout.CENTER);
 
     content.add(left);

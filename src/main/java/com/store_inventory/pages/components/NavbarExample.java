@@ -1,8 +1,7 @@
 package com.store_inventory.pages.components;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import javax.swing.*;
 
 public class NavbarExample {
     public static void main(String[] args) {
@@ -26,13 +25,19 @@ public class NavbarExample {
         // Create content panels
         JPanel contentPanel = new JPanel(new CardLayout());
         JPanel homePanel = new JPanel();
-        homePanel.add(new JLabel("Welcome to the Home Page"));
+        JLabel homeLabel = new JLabel("Welcome to the Home Page");
+        UITheme.themeLabel(homeLabel);
+        homePanel.add(homeLabel);
 
         JPanel aboutPanel = new JPanel();
-        aboutPanel.add(new JLabel("This is the About Page"));
+        JLabel aboutLabel = new JLabel("This is the About Page");
+        UITheme.themeLabel(aboutLabel);
+        aboutPanel.add(aboutLabel);
 
         JPanel contactPanel = new JPanel();
-        contactPanel.add(new JLabel("Contact Page"));
+        JLabel contactLabel = new JLabel("Contact Page");
+        UITheme.themeLabel(contactLabel);
+        contactPanel.add(contactLabel);
 
         // Add panels to CardLayout
         contentPanel.add(homePanel, "home");

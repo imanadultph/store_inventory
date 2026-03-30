@@ -24,11 +24,11 @@ public class Header extends JPanel {
     left.setBorder(new EmptyBorder(12, 16, 12, 16));
 
     titleLabel.setFont(UITheme.TITLE_FONT);
-    titleLabel.setForeground(UITheme.DARK_TEXT);
+    UITheme.themeLabel(titleLabel);
     setTitle(title);
 
     userLabel.setFont(UITheme.SUBTITLE_FONT);
-    userLabel.setForeground(UITheme.MUTED_TEXT);
+    UITheme.themeLabel(userLabel);
     setUser(user);
 
     left.add(titleLabel);

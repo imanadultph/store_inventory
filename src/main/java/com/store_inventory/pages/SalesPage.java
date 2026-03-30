@@ -46,10 +46,11 @@ public class SalesPage extends JPanel implements Refreshable {
     JLabel title = new JLabel("Sales Overview");
     title.setFont(
         UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 32));
+    UITheme.themeLabel(title);
     JLabel description = new JLabel(
         "Review recent transactions and sales performance at a glance.");
     description.setFont(UITheme.SUBTITLE_FONT);
-    description.setForeground(UITheme.MUTED_TEXT);
+    UITheme.themeLabel(description);
 
     headerText.add(title);
     headerText.add(Box.createVerticalStrut(6));
@@ -110,10 +111,11 @@ public class SalesPage extends JPanel implements Refreshable {
     card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
     valueLabel.setFont(UITheme.TITLE_FONT);
     valueLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(valueLabel);
     JLabel labelLabel = new JLabel(label);
     labelLabel.setFont(UITheme.SUBTITLE_FONT);
-    labelLabel.setForeground(UITheme.MUTED_TEXT);
     labelLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(labelLabel);
     card.add(valueLabel);
     card.add(Box.createVerticalStrut(6));
     card.add(labelLabel);
@@ -146,14 +148,14 @@ public class SalesPage extends JPanel implements Refreshable {
   private JLabel headerLabel(String text) {
     JLabel label = new JLabel(text);
     label.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
-    label.setForeground(UITheme.DARK_TEXT);
+    UITheme.themeLabel(label);
     return label;
   }
 
   private JLabel cellLabel(String text) {
     JLabel label = new JLabel(text);
     label.setFont(UITheme.LABEL_FONT);
-    label.setForeground(UITheme.MUTED_TEXT);
+    UITheme.themeLabel(label);
     return label;
   }
 
@@ -169,6 +171,7 @@ public class SalesPage extends JPanel implements Refreshable {
 
     JLabel title = new JLabel("Add Sale");
     title.setFont(UITheme.customFont(UITheme.FONT_FAMILY, UITheme.FONT_WEIGHT_TITLE, 22));
+    UITheme.themeLabel(title);
     content.add(title, BorderLayout.NORTH);
 
     JPanel formContainer = new JPanel();
@@ -191,7 +194,7 @@ public class SalesPage extends JPanel implements Refreshable {
       label.setOpaque(true);
       label.setFont(UITheme.LABEL_FONT);
       label.setBackground(isSelected ? UITheme.CARD_BACKGROUND : UITheme.BACKGROUND);
-      label.setForeground(UITheme.DARK_TEXT);
+      UITheme.themeLabel(label);
       return label;
     });
     JSpinner qtySpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1_000_000, 1));
@@ -321,14 +324,14 @@ public class SalesPage extends JPanel implements Refreshable {
   private JLabel sectionTitle(String text) {
     JLabel label = new JLabel(text);
     label.setFont(UITheme.LABEL_FONT.deriveFont(Font.BOLD));
-    label.setForeground(UITheme.DARK_TEXT);
+    UITheme.themeLabel(label);
     return label;
   }
 
   private JLabel formLabel(String text) {
     JLabel label = new JLabel(text);
     label.setFont(UITheme.LABEL_FONT);
-    label.setForeground(UITheme.DARK_TEXT);
+    UITheme.themeLabel(label);
     return label;
   }
 

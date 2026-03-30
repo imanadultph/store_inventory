@@ -31,15 +31,17 @@ public class LoginPage extends JPanel {
     JLabel title = new JLabel("Welcome to the System");
     title.setFont(UITheme.TITLE_FONT);
     title.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(title);
 
     JLabel subtitle = new JLabel("Verify your identity");
     subtitle.setFont(UITheme.SUBTITLE_FONT);
-    subtitle.setForeground(UITheme.MUTED_TEXT);
     subtitle.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(subtitle);
 
     JLabel nameLabel = new JLabel("Name:");
     nameLabel.setFont(UITheme.LABEL_FONT);
     nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(nameLabel);
 
     nameField.setMaximumSize(new Dimension(320, 28));
     nameField.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -47,6 +49,7 @@ public class LoginPage extends JPanel {
     JLabel passwordLabel = new JLabel("Password:");
     passwordLabel.setFont(UITheme.LABEL_FONT);
     passwordLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    UITheme.themeLabel(passwordLabel);
 
     passwordField.setMaximumSize(new Dimension(320, 28));
     passwordField.setAlignmentX(Component.LEFT_ALIGNMENT);
