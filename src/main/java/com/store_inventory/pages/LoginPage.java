@@ -9,11 +9,14 @@ public class LoginPage extends JPanel {
   private final JTextField nameField = new JTextField(20);
   private final JPasswordField passwordField = new JPasswordField(20);
   private final JButton loginButton = UITheme.primaryButton("Log In");
+  private final JCheckBox showPasswordCheck = new JCheckBox("Show password");
+  private final char passwordEchoChar;
 
   public LoginPage() {
     setLayout(new BorderLayout());
     setBackground(UITheme.BACKGROUND);
 
+    passwordEchoChar = passwordField.getEchoChar();
     Border line = UITheme.roundedBorder(UITheme.BORDER, 1, 12);
     Border padding = new EmptyBorder(8, 8, 8, 8);
     UITheme.themeTextField(nameField);
@@ -56,7 +59,19 @@ public class LoginPage extends JPanel {
     passwordField.setMaximumSize(new Dimension(320, 28));
     passwordField.setAlignmentX(Component.LEFT_ALIGNMENT);
 
+    showPasswordCheck.setAlignmentX(Component.LEFT_ALIGNMENT);
+    showPasswordCheck.setOpaque(false);
+    showPasswordCheck.setForeground(UITheme.LABEL_TEXT);
+    showPasswordCheck.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    showPasswordCheck.setFocusPainted(false);
+    showPasswordCheck.setFont(UITheme.LABEL_FONT);
+    showPasswordCheck.addActionListener(
+        e
+        -> passwordField.setEchoChar(
+            showPasswordCheck.isSelected() ? 0 : passwordEchoChar));
+
     loginButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+    loginButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 36));
     loginButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
     card.add(title);
@@ -70,6 +85,8 @@ public class LoginPage extends JPanel {
     card.add(passwordLabel);
     card.add(Box.createVerticalStrut(6));
     card.add(passwordField);
+    card.add(Box.createVerticalStrut(6));
+    card.add(showPasswordCheck);
     card.add(Box.createVerticalStrut(18));
     card.add(loginButton);
 
