@@ -70,8 +70,8 @@ public class HomePage extends JPanel implements Refreshable {
 
     JPanel right = UITheme.cardPanel();
     right.setLayout(new BorderLayout());
-    ImageIcon icon = new ImageIcon(getClass().getResource("/assets/image.png"));
-    Image img = icon.getImage().getScaledInstance(300, 200, Image.SCALE_SMOOTH);
+    ImageIcon icon = new ImageIcon(getClass().getResource("/assets/icon.png"));
+    Image img = icon.getImage().getScaledInstance(350, 350, Image.SCALE_SMOOTH);
 
     JLabel imageLabel = new JLabel(new ImageIcon(img));
     UITheme.themeLabel(imageLabel);
