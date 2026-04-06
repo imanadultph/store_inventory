@@ -170,19 +170,8 @@ public class SalesPage extends JPanel implements Refreshable {
     dateField.setEnabled(false);
     JComboBox<Product> productBox = new JComboBox<>(
         inventory.getAllProducts().toArray(new Product[0]));
-    UITheme.themeComboBox(productBox);
     productBox.setFont(UITheme.LABEL_FONT);
-    productBox.setRenderer((list, value, index, isSelected, cellHasFocus) -> {
-      JLabel label = new JLabel();
-      if (value != null) {
-        label.setText(value.getName() + " (" + value.getSku() + ")");
-      }
-      label.setOpaque(true);
-      label.setFont(UITheme.LABEL_FONT);
-      label.setBackground(isSelected ? UITheme.CARD_BACKGROUND : UITheme.BACKGROUND);
-      UITheme.themeLabel(label);
-      return label;
-    });
+    UITheme.themeComboBox(productBox);
     JSpinner qtySpinner = new JSpinner(new SpinnerNumberModel(1, 1, 1_000_000, 1));
     UITheme.themeNumberInput(qtySpinner);
     qtySpinner.setFont(UITheme.LABEL_FONT);

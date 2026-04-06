@@ -35,4 +35,9 @@ public class Product {
 
   public boolean isLowStock() { return quantity <= reorderLevel; }
   public double getInventoryValue() { return price * quantity; }
+
+  @Override
+  public String toString() {
+    return name + " (" + sku + ")";
+  }
 }
