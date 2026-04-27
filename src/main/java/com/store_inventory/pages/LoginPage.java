@@ -107,9 +107,8 @@ public class LoginPage extends JPanel {
   }
 
   public boolean authenticate() {
-    // String name = nameField.getText();
-    // String password = new String(passwordField.getPassword());
-    // return name.equals("admin") && password.equals("password");
-    return true;
+    String name = nameField.getText();
+    String password = new String(passwordField.getPassword());
+    return name.equals("admin") && password.equals("password");
   }
 }
